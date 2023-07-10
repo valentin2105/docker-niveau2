@@ -8,21 +8,22 @@ services:
       - ./app:/var/www/html
     restart: always
 
-#  postgres:
-#    image: postgres:latest
-#    environment:
-#      POSTGRES_USER: myapp
-#      POSTGRES_PASSWORD: superPassword
-#      POSTGRES_DATABASE: myapp
-#      PGDATA: /data/postgres
-#    volumes:
-#       - ./postgres:/data/postgres
-#    ports:
-#      - "5432:5432"
-#    restart: always
-#  
-#  redis:
-#    image: redis:alpine
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: myapp
+      POSTGRES_PASSWORD: superPassword
+      POSTGRES_DATABASE: myapp
+      PGDATA: /data/postgres
+    volumes:
+       - ./pg_hba.conf:/etc/postgresql/pg_hba.conf
+       - ./postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: always
+  
+  redis:
+    image: redis:alpine
 
 
 #    cpus: "0.5"

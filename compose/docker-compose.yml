@@ -9,8 +9,13 @@ services:
       - MYSQL_DATABASE=wordpress
       - MYSQL_USER=wordpress
       - MYSQL_PASSWORD=wordpress
+
   wordpress:
     image: wordpress:latest
+    volumes:
+      - wp_data:/var/www/html
+    depends_on:
+      - db
     ports:
       - 80:80
     restart: always
@@ -19,5 +24,7 @@ services:
       - WORDPRESS_DB_USER=wordpress
       - WORDPRESS_DB_PASSWORD=wordpress
       - WORDPRESS_DB_NAME=wordpress
+
 volumes:
   db_data:
+  wp_data:
