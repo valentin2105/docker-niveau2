@@ -16,7 +16,7 @@ services:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
 
-  whoami:
+  whoami1:
     # A container that exposes an API to show its IP address
     image: traefik/whoami
     labels:
