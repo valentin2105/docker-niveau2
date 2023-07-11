@@ -3,7 +3,7 @@ version: '3'
 services:
   reverse-proxy:
     # The official v2 Traefik docker image
-    image: traefik:v2.10
+    image: reg.ntl.nc/library/traefik:latest
     # Enables the web UI and tells Traefik to listen to docker
     command: --api.insecure=true --providers.docker
 
@@ -18,7 +18,7 @@ services:
 
   whoami1:
     # A container that exposes an API to show its IP address
-    image: traefik/whoami
+    image: reg.ntl.nc/library/whoami
     labels:
       - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)"
 

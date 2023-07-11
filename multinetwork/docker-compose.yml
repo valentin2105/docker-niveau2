@@ -1,0 +1,37 @@
+services:
+
+  proxy:
+    image: reg.ntl.nc/library/nginx-proxy
+    ports: 
+      - "80:80"
+    volumes:
+      - "/var/run/docker.sock:/tmp/docker.sock"
+    networks:
+      - frontend
+
+  app1:
+    image: reg.ntl.nc/library/whoami
+    environment:
+      VIRTUAL_HOST: "foo.bar.org"
+    networks:
+      - frontend
+      - backend
+  app2:
+    image: reg.ntl.nc/library/nginx
+    environment:
+      VIRTUAL_HOST: "foo.bar.nc"
+    networks:
+      - frontend
+      - backend
+
+  db:
+    image: reg.ntl.nc/library/postgres
+    environment:
+      POSTGRES_PASSWORD: "SuperP@assword"
+    networks:
+      - backend
+
+networks:
+  frontend:
+  backend:
+

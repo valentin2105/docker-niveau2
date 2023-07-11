@@ -1,0 +1,73 @@
+networks:
+  db01:
+  db02:
+  db03:
+  db04:
+
+volumes:
+  db01:
+  db02:
+  db03:
+  db04:
+
+x-defaults: &defaults
+  restart: always
+  image: reg.ntl.nc/library/mariadb:latest
+
+services:
+
+  db01:
+    volumes:
+      - db01:/var/lib/mysql
+    ports:
+      - '33061:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=DBPassw0rd
+      - MYSQL_DATABASE=db01
+      - MYSQL_USER=db01User
+      - MYSQL_PASSWORD=db01Password
+    networks:
+      - db01
+    <<: *defaults
+
+  db02:
+    volumes:
+      - db02:/var/lib/mysql
+    ports:
+      - '33062:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=DBPassw0rd
+      - MYSQL_DATABASE=db02
+      - MYSQL_USER=db02User
+      - MYSQL_PASSWORD=db02Password
+    networks:
+      - db02
+    <<: *defaults
+
+  db03:
+    volumes:
+      - db03:/var/lib/mysql
+    ports:
+      - '33063:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=DBPassw0rd
+      - MYSQL_DATABASE=db03
+      - MYSQL_USER=db03User
+      - MYSQL_PASSWORD=db03Password
+    networks:
+      - db03
+    <<: *defaults
+
+  db04:
+    volumes:
+      - db04:/var/lib/mysql
+    ports:
+      - '33064:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=DBPassw0rd
+      - MYSQL_DATABASE=db04
+      - MYSQL_USER=db04User
+      - MYSQL_PASSWORD=db04Password
+    networks:
+      - db04
+    <<: *defaults

@@ -1,11 +1,6 @@
-FROM python:3.9-alpine3.18
+FROM reg.ntl.nc/library/python:3.8-slim-buster
 
 WORKDIR /python-docker
-
-RUN mkdir /.local  && \
-    chown 1000:1000 /.local  -R
-
-USER 1000:1000
 
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
