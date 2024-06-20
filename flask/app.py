@@ -9,6 +9,10 @@ def hello():
 def ping():
     return 'pong'
 
+@app.route('/thanks')
+def ping():
+    return 'you are welcome'
+
 if __name__ == "__main__":
     app.run(debug=True)
 
