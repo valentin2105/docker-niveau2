@@ -1,4 +1,4 @@
-FROM python:3.8-slim-buster
+FROM reg.ntl.nc/proxy/library/python:3.12-slim
 
 WORKDIR /python-docker
 
