@@ -2,8 +2,11 @@ FROM reg.ntl.nc/library/debian:12
 
 ENV  DEBIAN_FRONTEND=noninteractive
 
+
+
 RUN apt-get update && \
     apt-get install -y  --no-install-recommends \
+    	curl \
     	apache2 \
         php8.2 \
         iputils-ping \

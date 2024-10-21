@@ -8,18 +8,18 @@ services:
       - ./app:/var/www/html
     restart: always
 
-#  postgres:
-#    image: reg.ntl.nc/library/postgres:latest
-#    environment:
-#      POSTGRES_USER: myapp
-#      POSTGRES_PASSWORD: superPassword
-#      POSTGRES_DATABASE: myapp
-#      PGDATA: /data/postgres
-#    volumes:
-#       - ./postgres:/data/postgres
-#    ports:
-#      - "5432:5432"
-#    restart: always
-#  
-#  redis:
-#    image: reg.ntl.nc/library/redis:latest
+  postgres:
+    image: reg.ntl.nc/library/postgres:latest
+    environment:
+      POSTGRES_USER: myapp
+      POSTGRES_PASSWORD: superPassword
+      POSTGRES_DATABASE: myapp
+      PGDATA: /data/postgres
+    volumes:
+       - ./postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: always
+  
+  redis:
+    image: reg.ntl.nc/library/redis:latest

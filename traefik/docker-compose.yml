@@ -1,26 +1,35 @@
-version: '3'
+version: "3.3"
 
 services:
-  reverse-proxy:
-    # The official v2 Traefik docker image
-    image: reg.ntl.nc/library/traefik:latest
-    # Enables the web UI and tells Traefik to listen to docker
-    command: --api.insecure=true --providers.docker
 
+  traefik:
+    image: "traefik:v2.10"
+    container_name: "traefik"
+    command:
+      #- "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
     ports:
-      # The HTTP port
       - "80:80"
-      # The Web UI (enabled by --api.insecure=true)
-      - "8090:8080"
+      - "8080:8080"
     volumes:
-      # So that Traefik can listen to the Docker events
-      - /var/run/docker.sock:/var/run/docker.sock
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
-  whoami1:
-    # A container that exposes an API to show its IP address
-    image: reg.ntl.nc/library/whoami
-    scale: 1
+  whoami:
+    image: "traefik/whoami"
+    container_name: "simple-service"
     labels:
-      - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)"
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)"
+      - "traefik.http.routers.whoami.entrypoints=web"
 
-# --providers.docker.swarmMode=true
+  whoami2:
+    image: "traefik/whoami"
+    container_name: "simple-service2"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami2.rule=Host(`whoami2.localhost`)"
+      - "traefik.http.routers.whoami2.entrypoints=web"
+
