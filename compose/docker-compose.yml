@@ -1,6 +1,6 @@
 services:
   db:
-    image: reg.ntl.nc/library/mariadb:latest
+    image: reg.ntl.nc/proxy/library/mariadb:latest
     volumes:
       - db_data:/var/lib/mysql
     restart: always
@@ -11,7 +11,7 @@ services:
       - MYSQL_PASSWORD=wordpress
 
   wordpress:
-    image: reg.ntl.nc/library/wordpress:latest
+    image: reg.ntl.nc/proxy/library/wordpress:latest
     volumes:
       - wp_data:/var/www/html
     depends_on:
