@@ -1,4 +1,4 @@
-FROM reg.ntl.nc/library/debian:12
+FROM reg.ntl.nc/proxy/library/debian:12
 
 ENV  DEBIAN_FRONTEND=noninteractive
 
