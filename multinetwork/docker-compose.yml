@@ -1,7 +1,7 @@
 services:
 
   proxy:
-    image: reg.ntl.nc/library/nginx-proxy
+    image: reg.ntl.nc/proxy/nginxproxy/nginx-proxy
     ports: 
       - "80:80"
     volumes:
@@ -10,14 +10,14 @@ services:
       - frontend
 
   app1:
-    image: reg.ntl.nc/library/whoami
+    image: reg.ntl.nc/proxy/traefik/whoami
     environment:
       VIRTUAL_HOST: "foo.bar.org"
     networks:
       - frontend
       - backend
   app2:
-    image: reg.ntl.nc/library/nginx
+    image: reg.ntl.nc/proxy/library/nginx
     environment:
       VIRTUAL_HOST: "foo.bar.nc"
     networks:
@@ -25,9 +25,9 @@ services:
       - backend
 
   db:
-    image: reg.ntl.nc/library/postgres
+    image: reg.ntl.nc/proxy/library/mariadb
     environment:
-      POSTGRES_PASSWORD: "SuperP@assword"
+      MYSQL_ROOT_PASSWORD: "SuperP@assword"
     networks:
       - backend
 
