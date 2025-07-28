@@ -26,7 +26,7 @@ services:
       - "traefik.http.routers.whoami.entrypoints=web"
 
   whoami2:
-    image: "traefik/whoami"
+    image: "nginxdemos/hello"
     container_name: "simple-service2"
     labels:
       - "traefik.enable=true"
