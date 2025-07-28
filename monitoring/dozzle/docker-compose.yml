@@ -2,7 +2,7 @@ version: "3"
 services:
   dozzle:
     container_name: dozzle
-    image: reg.ntl.nc/library/dozzle:latest
+    image: reg.ntl.nc/proxy/amir20/dozzle:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
