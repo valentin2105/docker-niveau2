@@ -8,5 +8,5 @@ services:
       - ./app:/var/www/html
     restart: always
   
-#  redis:
-#    image: reg.ntl.nc/library/redis:latest
+  redis:
+    image: reg.ntl.nc/library/redis:latest

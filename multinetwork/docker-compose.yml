@@ -12,14 +12,14 @@ services:
   app1:
     image: reg.ntl.nc/proxy/traefik/whoami
     environment:
-      VIRTUAL_HOST: "foo.bar.org"
+      VIRTUAL_HOST: "foo.bar.localhost"
     networks:
       - frontend
       - backend
   app2:
     image: reg.ntl.nc/proxy/library/nginx
     environment:
-      VIRTUAL_HOST: "foo.bar.nc"
+      VIRTUAL_HOST: "bar.foo.localhost"
     networks:
       - frontend
       - backend
